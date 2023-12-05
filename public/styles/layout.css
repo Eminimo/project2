@@ -1,23 +1,19 @@
 /*
- * http://www.paulirish.com/2012/box-sizing-border-box-ftw/
- * https://css-tricks.com/international-box-sizing-awareness-day/
- * Do not modify these two selectors, please
- */
-html {
-  box-sizing: border-box;
-}
-*, *:before, *:after {
-  box-sizing: inherit;
-}
-
-/*
  * Global layout stuff
  */
 
-body {
+ body {
   color: #545149;
   background-color: #f4f1ec;
   font-size: 24px;
+  font-family: 'Source Sans 3', sans-serif; /* Apply Source Sans 3 font to the entire body */
+  font-weight: normal; /* Specify the font weight if needed */
+}
+
+nav span {
+  font-family: 'Bungee', sans-serif; /* Apply Bungee font to the Tweeter logo in the nav */
+  font-weight: bold; 
+  font-size: 1.5em; 
 }
 
 /*
