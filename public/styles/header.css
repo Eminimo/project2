@@ -1,0 +1,29 @@
+/* header.css */
+
+/* Style the Header */
+header {
+  height: 400px;
+  width: 100%;
+  background-image: url("https://www.transparenttextures.com/patterns/nistri.png");
+  background-color: rgba(241, 117, 1, 0.815);
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Center the Avatar */
+header img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+
+/* Center the Name */
+header h2 {
+  margin-top: 1px; /* Adjust the margin as needed */
+  font-size: 1.5em;
+  color: #FFFFFF;
+}
