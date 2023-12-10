@@ -1,5 +1,3 @@
-console.log("Composer char counter script loaded!");
-
 $(document).ready(function () {
     const MAX_CHARACTERS = 140;
 
@@ -17,14 +15,20 @@ $(document).ready(function () {
         // Update the counter text
         counter.text(charactersRemaining);
 
-        // Update counter color to red if characters exceed the limit
-        if (charactersRemaining < 0) {
-            counter.css('color', 'red');
-        } else {
-            // Reset color to default if within the limit
-            counter.css('color', ''); // Set to empty string to remove inline style
-        }
+        // Update counter color based on characters remaining
+        updateCounterColor(counter, charactersRemaining);
     });
+
+    // Function to update counter color based on characters remaining
+    function updateCounterColor(counter, remaining) {
+        if (remaining < 0) {
+            // If characters exceeded, set color to red
+            counter.addClass('exceeded');
+        } else {
+            // If within the limit, reset color to default
+            counter.removeClass('exceeded');
+        }
+    }
 
     // Find the form inside .new-tweet and attach a submit event listener
     $(".new-tweet form").on('submit', function (event) {
@@ -46,19 +50,20 @@ $(document).ready(function () {
             // Your existing logic for submitting the tweet goes here
             // ...
         }
+       
     });
 
     // Function to display an error message
     function displayError(message) {
         // Find the error message container and set the message
         const errorContainer = $(".new-tweet .error-message");
-        errorContainer.text(message);
+        errorContainer.text(message).slideDown();
     }
 
     // Function to clear any existing error messages
     function clearError() {
         // Find the error message container and clear the text
         const errorContainer = $(".new-tweet .error-message");
-        errorContainer.text('');
+        errorContainer.text('').slideUp();
     }
 });

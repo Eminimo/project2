@@ -1,102 +1,122 @@
 // Function to create a tweet element
-const createTweetElement = function (tweet) {
-    // Calculate the time ago
-    const timeAgo = timeago.format(tweet.created_at);
-  
-    // Create a tweet element dynamically based on the tweet data
-    let $tweet = $(`
-      <article class="tweet">
-        <header>
-          <img src="${tweet.user.avatars}" alt="User Avatar">
-          <span>${tweet.user.name}</span>
-          <span class="handle">${tweet.user.handle}</span>
-        </header>
-        <p class="tweet-content">${tweet.content.text}</p>
-        <footer>
-          <span class="timestamp">${timeAgo}</span>
-        </footer>
-      </article>
-    `);
-  
-    return $tweet;
-  };
-  
-  // Function to render tweets
-  const renderTweets = function (tweets) {
-    // Empty the #tweets-container to start fresh
-    $('#tweets-container').empty();
-  
-    // Loop through tweets
-    for (const tweet of tweets) {
-      // Call createTweetElement for each tweet
-      const $tweet = createTweetElement(tweet);
-  
-      // Append the tweet to the #tweets-container
-      $('#tweets-container').append($tweet);
-    }
-  };
-  
-  // Event listener for the form submission
-  $(document).ready(function () {
-    $('#submit-tweet').click(function (event) {
-      event.preventDefault(); // Prevent the default form submission
-  
-      // Get the tweet text from the textarea
-      const tweetText = $('#tweet-text').val();
-  
-      // Perform validation if needed
-      if (tweetText.length === 0 || tweetText.length > 140) {
-        // Show an error message
-        $('#error-message').text('Tweet must be between 1 and 140 characters').slideDown();
-        return;
+function createTweetElement(tweetData) {
+  const $tweet = $('<article>').addClass('tweet');
+
+  // Header
+  const $header = $('<header>').addClass('tweet-header');
+  const $avatar = $('<img>').attr('src', tweetData.user.avatars).addClass('avatar');
+  const $name = $('<h2>').text(tweetData.user.name);
+  const $handle = $('<span>').text(tweetData.user.handle);
+  $header.append($avatar, $name, $handle);
+
+  // Body
+  const $content = $('<div>').addClass('tweet-content').text(tweetData.content.text);
+
+  // Footer
+  const timeAgo = timeago.format(new Date(tweetData.created_at));
+  const $footer = $('<footer>').append($('<span>').addClass('time-ago').text(timeAgo));
+
+  // Append header, body, and footer to the tweet
+  $tweet.append($header, $content, $footer);
+
+  return $tweet;
+}
+
+// Function to render tweets on the page
+function renderTweets(tweets) {
+  const sortedTweets = tweets.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
+  const $tweetsContainer = $('#tweets-container');
+  $tweetsContainer.empty();
+
+  sortedTweets.forEach(tweet => {
+    const $tweet = createTweetElement(tweet);
+    $tweetsContainer.append($tweet);
+  });
+}
+$(document).ready(function () {
+  const MAX_CHARACTERS = 140;
+
+  // Function to load tweets from the server
+  const loadTweets = function () {
+    $.ajax({
+      method: 'GET',
+      url: '/tweets',
+      dataType: 'json',
+      success: function (tweets) {
+        renderTweets(tweets);
+      },
+      error: function (error) {
+        console.error('Error loading tweets:', error);
       }
-  
-      // Hide any existing error message
-      $('#error-message').slideUp();
-  
-      // AJAX POST request to submit the tweet data
+    });
+  };
+
+  // Function to clear any existing error messages
+  function clearError() {
+    const errorContainer = $(".new-tweet .error-message");
+    errorContainer.text('').slideUp();
+  }
+
+  // Function to display an error message
+  function displayError(message) {
+    const errorContainer = $(".new-tweet .error-message");
+    errorContainer.text(message).slideDown();
+  }
+
+  // Function to display a success message
+  function displaySuccess(message) {
+    const successContainer = $("#success-message");
+    successContainer.text(message).slideDown();
+  }
+
+  // Function to update counter color based on characters remaining
+  function updateCounterColor(counter, remaining) {
+    if (remaining < 0) {
+      counter.addClass('exceeded');
+    } else {
+      counter.removeClass('exceeded');
+    }
+  }
+
+  // Event listener for textarea input
+  $('#tweet-text').on('input', function () {
+    const tweetLength = $(this).val().length;
+    const remaining = MAX_CHARACTERS - tweetLength;
+    const counter = $('.counter');
+    counter.text(remaining);
+    updateCounterColor(counter, remaining);
+  });
+
+  // Submit event listener for new tweet form
+  $(".new-tweet form").on('submit', function (event) {
+    event.preventDefault();
+
+    const tweetContent = $(this).find('textarea').val();
+
+    if (tweetContent.trim() === '' || tweetContent.length > MAX_CHARACTERS) {
+      const errorMessage = "Tweet must be between 1 and 140 characters.";
+      displayError(errorMessage);
+    } else {
+      clearError();
+
       $.ajax({
         method: 'POST',
-        url: '/tweets', // Update the URL to match your server endpoint
-        data: { text: tweetText },
+        url: '/tweets',
+        data: $(this).serialize(),
         success: function (data) {
-          // Handle the success response from the server
           console.log('Tweet submitted successfully:', data);
-  
-          // Optionally, you can append the new tweet to the UI without a page refresh
-          const $newTweet = createTweetElement(data);
-          $('#tweets-container').prepend($newTweet);
-  
-          // Clear the textarea after submission
+          loadTweets();
           $('#tweet-text').val('');
-  
-          // Show a success message
-          $('#success-message').text('Tweet submitted successfully').slideDown();
+          displaySuccess('Tweet posted successfully');
         },
         error: function (error) {
-          // Handle the error response from the server
           console.error('Error submitting tweet:', error);
+          $('#success-message').slideUp();
         }
       });
-    });
+    }
   });
-  
-  // Fake data taken from initial-tweets.json
-  const data = [
-    {
-      "user": {
-        "name": "Newton",
-        "avatars": "https://i.imgur.com/73hZDYK.png",
-        "handle": "@SirIsaac"
-      },
-      "content": {
-        "text": "If I have seen further it is by standing on the shoulders of giants"
-      },
-      "created_at": 1461116232227
-    },
-    // Add more tweets if needed...
-  ];
-  
-  // Call renderTweets with the data array
-  renderTweets(data);
-  
+
+  // Load tweets on page load
+  loadTweets();
+});

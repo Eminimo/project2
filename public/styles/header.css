@@ -27,3 +27,15 @@ header h2 {
   font-size: 1.5em;
   color: #FFFFFF;
 }
+.tweet-header {
+  height: 400px;
+  width: 100%;
+  background-image: url("https://www.transparenttextures.com/patterns/nistri.png");
+  background-color: rgba(224, 228, 231, 0.815);
+  background-size: cover;
+  background-position: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}

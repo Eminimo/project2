@@ -1,4 +1,4 @@
-/* new-tweet.css */
+/* tweet.css */
 
 .new-tweet {
   /* Add styles to position the elements as described */
@@ -41,6 +41,7 @@ textarea {
   box-sizing: border-box;
 }
 
+
 .counter {
   display: block; /* Make the counter a block element for better alignment */
   text-align: right; /* Align the counter text to the right */
@@ -60,4 +61,35 @@ textarea {
   border-bottom: 2px solid #000000; /* Set a thick border at the bottom */
   padding-bottom: 10px; /* Add some bottom padding for separation */
   margin-bottom: 20px; /* Add additional bottom margin for spacing */
+}
+
+.counter.exceeded {
+  color: red;
+}
+/* Additions for tweet header layout */
+.tweet-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.tweet-header .avatar {
+  width: 40px;  /* Example size, adjust as needed */
+  height: 40px; /* Example size, adjust as needed */
+  border-radius: 50%;
+  /* Add any additional styling for the avatar */
+}
+
+.tweet-header .name {
+  /* Add styling for the name */
+  margin-left: 10px; /* Space between avatar and name */
+}
+
+.tweet-header .handle {
+  margin-left: auto; /* Pushes the handle to the right */
+  /* Add any additional styling for the handle */
+}
+
+.counter.exceeded {
+  color: red; /* Color for exceeded character count */
 }

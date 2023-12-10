@@ -2,37 +2,21 @@
 <html lang="en">
 
 <head>
-  <!-- Meta Information -->
+  <!-- Head Section: Contains Meta Information, Title, Stylesheets, and Font Links -->
   <title>Tweeter - Home Page</title>
-
-  <!-- Font Awesome CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-
-  <!-- External CSS -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css" type="text/css" />
-
-  <!-- Font Links -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+  <link rel="stylesheet" href="/styles/layout.css">
+  <link rel="stylesheet" href="/styles/nav.css">
+  <link rel="stylesheet" href="/styles/header.css">
+  <link rel="stylesheet" href="/styles/new-tweet.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Source+Sans+3:ital,wght@0,300;0,600;1,300;1,600&display=swap" rel="stylesheet">
-
-  <!-- App CSS -->
-  <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
-  <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
-  <link rel="stylesheet" href="/styles/header.css" type="text/css" />
-  <link rel="stylesheet" href="/styles/new-tweet.css" type="text/css" /> <!-- Add this line -->
-
-  <!-- External JS -->
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-
-  <!-- App JS -->
-  <script type="text/javascript" src="/scripts/timeago.js"></script>
-  <script type="text/javascript" src="/scripts/client.js"></script>
-  <script type="text/javascript" src="/scripts/composer-char-counter.js"></script>
 </head>
 
 <body>
-  <!-- Top nav bar (fixed) -->
+  <!-- Navigation Bar -->
   <nav>
     <span>tweeter</span>
     <div class="new-tweet-header">
@@ -41,38 +25,100 @@
     </div>
   </nav>
 
+  <!-- Main Header: Contains User Profile Information -->
   <header>
     <div>
       <img src="/images/profile-hex.png" alt="Profile Image">
     </div>
     <br>
     <div>
-      <h2>Eminimo</h2>
+      <h2>Eminimo Eghosa</h2>
     </div>
   </header>
 
-  <!-- Page-specific (main) content here -->
+  <!-- Main Content Section -->
   <main class="container">
-    <section class="tweets" id="tweets-container">
-      <!-- Existing or dynamically added tweet elements go here -->
-    </section>
-
-    <!-- Right content area (new tweet input) -->
+    <!-- New Tweet Section -->
     <section class="new-tweet">
+      <h2>Compose Tweet</h2>
       <form id="tweet-form" action="/tweets" method="POST">
         <label for="tweet-text">What are you humming about?</label>
         <div class="tweet-controls">
-          <button type="button" id="submit-tweet">Tweet</button>
+          <button type="submit" id="submit-tweet">Tweet</button>
           <output name="counter" class="counter" for="tweet-text">140</output>
         </div>
-        <!-- New error message element -->
         <div class="error-message" id="error-message"></div>
-        <!-- New success message element -->
         <div class="success-message" id="success-message"></div>
         <textarea name="text" id="tweet-text" required></textarea>
       </form>
     </section>
+
+    <!-- Tweets Display Section -->
+        <!-- Section to display tweets -->
+        <section class="tweets" id="tweets-container">
+          <!-- Existing or dynamically added tweet elements go here -->
+          <!-- Example tweet elements -->
+          <article class="tweet">
+            <header class="tweet-header">
+          
+              <img src="/images/profile-hex.png" alt="Profile Image">
+              <h2>Pranklin</h2>
+              <span>@pranklin</span>
+            </header>
+            <div class="tweet-content">
+              Hello World!
+            </div>
+            <footer>
+              <span class="time-ago">2 hours ago</span>
+            </footer>
+          </article>
+    
+          <article class="tweet">
+            <header class="tweet-header">
+              <img src="/images/profile-hex.png" alt="Profile Image">
+              <h2>Lola</h2>
+              <span>@lola</span>
+            </header>
+            <div class="tweet-content">
+              This is amazing
+            </div>
+            <footer>
+              <span class="time-ago">1 hour ago</span>
+            </footer>
+          </article>
+    
+          <article class="tweet">
+            <header class="tweet-header">
+              <img src="/images/profile-hex.png" alt="Profile Image">
+              <h2>Descartes</h2>
+              <span>@descartes</span>
+            </header>
+            <div class="tweet-content">
+              Hi.
+            </div>
+            <footer>
+              <span class="time-ago">3 hours ago</span>
+            </footer>
+          </article>
+    
+          <article class="tweet">
+            <header class="tweet-header">
+              <img src="/images/profile-hex.png" alt="Profile Image">
+              <h2>Newton</h2>
+              <span>@newton</span>
+            </header>
+      
+    </section>
   </main>
+
+  <!-- JavaScript Files Section: Includes Libraries and Custom Scripts -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/timeago.js/4.0.2/timeago.min.js"></script>
+  <script src="/scripts/ajax-requests.js"></script>
+  <script src="/scripts/ui-updates.js"></script>
+  <script src="/scripts/event-handlers.js"></script>
+  <script src="/scripts/client.js"></script> <!-- Include if this file contains other global functions -->
+  <script src="/scripts/composer-char-counter.js"></script>
 </body>
 
 </html>
