@@ -1,26 +1,119 @@
 /* layout.css */
 
+/* Base styles applied for all devices */
 body {
   color: #545149;
   background-color: #f4f1ec;
-  font-size: 24px;
   font-family: 'Source Sans 3', sans-serif;
   font-weight: normal;
 }
 
 nav span {
   font-family: 'Bungee', sans-serif;
-  font-weight: bold; 
-  font-size: 1.5em; 
+  font-weight: bold;
 }
 
 main {
-  width: 90%;
   margin: 0 auto;
   background-color: inherit;
   padding: 20px;
 }
 
-/*
- * Additional CSS can be defined below or in other CSS files, as per instructions
- */
+/* Mobile-first base styles for tweets */
+.tweet-container {
+  /* Styles for tweets on mobile */
+  margin-bottom: 20px;
+}
+
+/* Tablet styles */
+@media only screen and (min-width: 768px) {
+  body {
+    font-size: 20px; /* Smaller font for tablet */
+  }
+
+  main {
+    width: 85%; /* Adjust the main width for tablet layout */
+  }
+
+  /* Two-column layout for tablet */
+  .profile-container,
+  .tweet-container {
+    width: 50%;
+    float: left;
+  }
+}
+
+/* Desktop styles */
+@media only screen and (min-width: 1024px) {
+  body {
+    font-size: 18px; /* Even smaller font for desktop */
+  }
+
+  main {
+    width: 75%; /* Narrower width for desktop */
+  }
+
+  .container {
+    max-width: 1024px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+  }
+
+  .sidebar {
+    flex: 1;
+    /* Additional styles for sidebar */
+  }
+
+  .main-content {
+    flex: 2;
+    margin-left: 20px;
+    /* Additional styles for main content */
+  }
+
+  /* Adjust the hero and feature sections to take up one-third each */
+  .hero,
+  .feature {
+    flex-basis: 33.3%;
+  }
+
+  /* Decrease the height of the feature section */
+  .feature {
+    height: 300px;
+  }
+
+  /* Adjust the menu bar appearance */
+  nav {
+    background-color: #new-color; /* Replace with your chosen color */
+    text-align: left;
+  }
+
+  /* Reveal the tagline */
+  .tagline {
+    display: block;
+  }
+}
+/* Base styles for mobile-first approach */
+.header {
+  background-color: orange;
+  /* Other styles */
+}
+
+/* Desktop view */
+@media only screen and (min-width: 1024px) {
+  .header {
+    /* Adjust the header size and position */
+    width: 33.3%; /* Example for one-third width */
+    position: absolute; /* Position it at the side */
+    left: 0;
+    top: 0;
+    height: 100%; /* Full height */
+  }
+
+  .main-content {
+    margin-left: 33.3%; /* Push main content to the right */
+    /* Other styles */
+  }
+}
+
+/* Add additional media queries and styles for larger screens if necessary */
