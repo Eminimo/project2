@@ -16,3 +16,9 @@ This repository is the starter code for the project: Students will fork and clon
 
 - Express
 - Node 5.10.x or above
+
+- ## Screenshot
+- !["Screenshot of header with fixed position"](https://github.com/Eminimo/project2/blob/master/docs/header%20has%20a%20fixed%20position.png)
+- !["Screenshot of tweets"](https://github.com/Eminimo/project2/blob/master/docs/loads%20tweets%20from%20server%20.png)
+- !["Screenshot of Character counter being implemented"](https://github.com/Eminimo/project2/blob/master/docs/Maximum%20char%20counter%20turned%20red.png)
+- !["Screenshot oftweet container"](https://github.com/Eminimo/project2/blob/master/docs/tweet%20container%20.png)
