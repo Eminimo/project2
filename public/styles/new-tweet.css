@@ -1,95 +1,115 @@
-/* tweet.css */
+/* new-tweet.css */
 
 .new-tweet {
-  /* Add styles to position the elements as described */
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px;
 }
 
-h2 {
-  font-size: 1.5em; /* Adjust font size as needed */
-  margin-bottom: 10px; /* Add some space between "What are you humming about" and the line */
+.new-tweet h2 {
+  font-size: 1.8em;
+  margin-bottom: 15px;
+  color: #333;
 }
 
-.line {
+.new-tweet .line {
   width: 100%;
-  height: 2px;
-  background-color: #545149; /* Adjust the color of the line as needed */
-  margin-bottom: 10px; /* Add some space between the line and the button */
+  height: 1px;
+  background-color: #e1e8ed;
+  margin-bottom: 15px;
 }
 
-.tweet-controls {
+.new-tweet .tweet-controls {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  width: 100%;
 }
 
-button {
-  background-color: #007BFF; /* Set the button background color to blue */
-  color: #fff; /* Set the text color to white */
-  padding: 10px 20px; /* Adjust the padding of the button as needed */
+.new-tweet button {
+  background-color: #1da1f2;
+  color: #ffffff;
+  padding: 10px 15px;
   border: none;
+  border-radius: 20px;
   cursor: pointer;
+  font-weight: bold;
+  text-transform: uppercase;
+  transition: background-color 0.3s ease;
 }
 
-textarea {
-  /* Add styles for the text box/field */
+.new-tweet button:hover {
+  background-color: #0d95e8;
+}
+
+.new-tweet textarea {
   width: 100%;
-  height: 100px; /* Adjust the height as needed */
-  padding: 10px;
-  box-sizing: border-box;
+  padding: 15px;
+  border: 1px solid #e1e8ed;
+  border-radius: 10px;
+  resize: none;
+  height: 100px;
+  font-family: 'Source Sans Pro', sans-serif;
+  margin-bottom: 10px;
 }
 
-
-.counter {
-  display: block; /* Make the counter a block element for better alignment */
-  text-align: right; /* Align the counter text to the right */
-  margin-top: 5px; /* Add some top margin for separation */
-  color: #007BFF; /* Set the counter text color to blue */
-  font-weight: bold; /* Make the counter text bold for better visibility */
+.new-tweet .counter {
+  text-align: right;
+  font-weight: bold;
+  color: #657786;
 }
 
-.error-message {
-  color: red; /* Set the color of the error message text */
-  margin-top: 10px; /* Add some top margin for separation */
+.new-tweet .error-message {
+  color: #e0245e;
+  margin-top: 10px;
 }
 
-/* Add a thick line under the label and textarea */
-label,
-textarea {
-  border-bottom: 2px solid #000000; /* Set a thick border at the bottom */
-  padding-bottom: 10px; /* Add some bottom padding for separation */
-  margin-bottom: 20px; /* Add additional bottom margin for spacing */
+.new-tweet label,
+.new-tweet textarea {
+  border-bottom: none;
 }
 
-.counter.exceeded {
-  color: red;
+.new-tweet .counter.exceeded {
+  color: #e0245e;
 }
-/* Additions for tweet header layout */
-.tweet-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
+
 
 .tweet-header .avatar {
-  width: 40px;  /* Example size, adjust as needed */
-  height: 40px; /* Example size, adjust as needed */
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
-  /* Add any additional styling for the avatar */
+  margin-right: 10px;
 }
 
 .tweet-header .name {
-  /* Add styling for the name */
-  margin-left: 10px; /* Space between avatar and name */
+  font-weight: bold;
+  font-size: 1.1em;
+  color: #333;
+  margin-right: 5px;
 }
 
 .tweet-header .handle {
-  margin-left: auto; /* Pushes the handle to the right */
-  /* Add any additional styling for the handle */
+  color: #657786;
+  font-size: 0.9em;
 }
-
-.counter.exceeded {
-  color: red; /* Color for exceeded character count */
+.tweet {
+  margin-bottom: 1em;
+}
+/* Hover effect for tweet boxes */
+.tweet:hover {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease-in-out;
+}
+.tweet:hover i.fa-solid{
+  color: black;
+  margin-left: 10px;
+}
+.tweet footer{
+  display:flex;
+  justify-content: space-between;
 }

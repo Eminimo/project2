@@ -15,7 +15,10 @@ function createTweetElement(tweetData) {
   // Footer
   const timeAgo = timeago.format(new Date(tweetData.created_at));
   const $footer = $('<footer>').append($('<span>').addClass('time-ago').text(timeAgo));
-
+  const iconcontainer=$("<span>").append($('<i>').addClass('fa-solid fa-heart').text(''))
+  .append($('<i>').addClass('fa-solid fa-flag').text(''))
+  .append($('<i>').addClass('fa-solid fa-retweet').text(''));
+  $footer.append(iconcontainer);
   // Append header, body, and footer to the tweet
   $tweet.append($header, $content, $footer);
 
@@ -38,11 +41,13 @@ $(document).ready(function () {
 
   // Function to load tweets from the server
   const loadTweets = function () {
+    console.log("inside load tweets")
     $.ajax({
       method: 'GET',
       url: '/tweets',
       dataType: 'json',
       success: function (tweets) {
+        console.log("/tweet result", tweets)
         renderTweets(tweets);
       },
       error: function (error) {

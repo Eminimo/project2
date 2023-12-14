@@ -1,0 +1,51 @@
+/* Base mobile styles */
+.tweet-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .tweet-header img.avatar {
+    border-radius: 50%;
+    margin-bottom: 10px; /* Spacing between the avatar and the name */
+  }
+  
+  .tweet-header h2.name,
+  .tweet-header span.handle {
+    order: 2;
+  }
+  
+  /* Hover effect for tweet container */
+  .tweet-container:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Desktop view styles */
+  @media only screen and (min-width: 1024px) {
+    .tweet-header {
+      flex-direction: row;
+      align-items: center;
+    }
+  
+    .tweet-header img.avatar {
+      order: 1;
+      margin-right: 15px; /* Spacing between the avatar and the name */
+    }
+  
+    .tweet-header h2.name {
+      order: 2;
+    }
+  
+    .tweet-header span.handle {
+      order: 3;
+      margin-left: auto; /* Pushes the handle to the right */
+    }
+  
+    /* Optional: Adjust the max-width of the tweet container for a better desktop layout */
+    .tweet-container {
+      max-width: 600px; /* or your preferred max-width */
+      margin: 10px auto; /* Center the tweet containers */
+    }
+  }
+  

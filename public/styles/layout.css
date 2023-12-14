@@ -46,48 +46,44 @@ main {
 /* Desktop styles */
 @media only screen and (min-width: 1024px) {
   body {
-    font-size: 18px; /* Even smaller font for desktop */
+    font-size: 18px; /* Smaller font size for desktop */
   }
 
   main {
-    width: 75%; /* Narrower width for desktop */
+    width: 75%; /* Adjust the main container width */
+    max-width: 1024px; /* Cap the width for very large screens */
+    margin: 0 auto; /* Center the main container */
   }
 
-  .container {
-    max-width: 1024px;
-    display: flex;
-    justify-content: center;
-    align-items: flex-start;
+  .header {
+    width: 33.3%; /* One-third of the full width for .hero section */
+    float: left; /* Align it to the left side */
   }
 
-  .sidebar {
-    flex: 1;
-    /* Additional styles for sidebar */
+  .feature {
+    width: 33.3%; /* One-third of the full width for .feature section */
+    height: 300px; /* Reduced height for the feature section */
+    float: left; /* Align it next to the .hero section */
   }
 
   .main-content {
-    flex: 2;
-    margin-left: 20px;
-    /* Additional styles for main content */
+    width: calc(100% - 33.3%); /* Remaining width for the content */
+    float: right; /* Align it to the right side */
   }
 
-  /* Adjust the hero and feature sections to take up one-third each */
-  .hero,
-  .feature {
-    flex-basis: 33.3%;
-  }
-
-  /* Decrease the height of the feature section */
-  .feature {
-    height: 300px;
-  }
-
-  /* Adjust the menu bar appearance */
   nav {
-    background-color: #new-color; /* Replace with your chosen color */
-    text-align: left;
+    /* Adjust the appearance of the menu bar */
+    background-color: blue; /* New background color */
+    text-align: left; /* Align the text to the left */
   }
 
+  nav .tagline {
+    display: block; /* Reveal the tagline */
+    font-size: 12px; /* Smaller font size for the tagline */
+    color: blue; /* Color for the tagline */
+  }
+
+  /* Other styles you want to adjust for the desktop layout */
   /* Reveal the tagline */
   .tagline {
     display: block;
@@ -98,6 +94,7 @@ main {
   background-color: orange;
   /* Other styles */
 }
+
 
 /* Desktop view */
 @media only screen and (min-width: 1024px) {
@@ -116,4 +113,132 @@ main {
   }
 }
 
-/* Add additional media queries and styles for larger screens if necessary */
+/* Base styles */
+body {
+  color: #333740; /* A sophisticated font color */
+  background-color: #f4f1ec;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-weight: 300; /* Lighter font-weight for a modern look */
+  line-height: 1.6; /* Improved readability */
+}
+
+nav {
+  background-color: #30475e; /* A deep, rich blue color */
+  color: #f2a365; /* A complementary, soft orange for contrast */
+  padding: 0.5em 1em;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+nav span {
+  font-family: 'Bungee', sans-serif;
+  font-size: 1.5em;
+}
+
+/* Layout and Responsive Design */
+main {
+  max-width: 1200px; /* Maximum width for very large screens */
+  margin: 20px auto;
+  padding: 20px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Consistent with nav */
+  background: #fff; /* A clean, white background for content */
+  border-radius: 8px; /* Softly rounded corners */
+}
+
+/* Responsive layout adjustments */
+@media only screen and (min-width: 768px) {
+  /* ...existing tablet styles... */
+}
+
+@media only screen and (min-width: 1024px) {
+  /* ...existing desktop styles... */
+}
+  /* Additional styles for a more professional look */
+  .header {
+    background-color: #f2a365; /* Soft orange to draw attention */
+    padding: 1em; /* Spacing around content */
+    border-top-left-radius: 8px; /* Rounded corners on the header */
+    border-top-right-radius: 8px;
+  }
+
+  .main-content {
+    clear: both; /* Clearing floats from header and feature sections */
+    padding: 1em;
+  }
+
+  nav {
+    background-color: #30475e; /* Keep consistent with the header */
+    text-align: right; /* Align navigation items to the right */
+  }
+
+  .tagline {
+    font-size: 0.9em; /* Smaller font size for subtlety */
+    color: #f2a365; /* Echoing the header color for branding */
+    margin-left: 1em;
+  }
+  /* Desktop view */
+@media only screen and (min-width: 1024px) {
+  .container {
+    display: flex; /* Use flexbox to create a flexible layout */
+    align-items: flex-start;
+  }
+
+  .header {
+    width: 33.3%; /* The header takes up one third of the container */
+    background-color: orange; /* Your header's orange background */
+    height: 100vh; /* Full height of the viewport */
+    position: fixed; /* Fixed position to the side */
+    left: 0;
+    top: 0;
+    /* Additional styling for header */
+  }
+
+  .tweets-container {
+    width: 66.7%; /* Tweets container takes up the remaining space */
+    margin-left: 33.3%; /* Push the container to the right */
+    padding: 20px; /* Add padding for spacing */
+    /* Additional styling for tweets container */
+  }
+}
+
+/* Interactivity */
+button, .tweet:hover {
+  transition: background-color 0.3s ease; /* Smooth transition for interactive elements */
+}
+
+button:hover, button:focus {
+  background-color: #f2a365; /* Highlight buttons on hover/focus */
+  outline: none; /* Removing default focus outline for custom styling */
+}
+
+/* Typography enhancements */
+h1, h2, h3, h4 {
+  color: #30475e; /* Using the deep blue for headers */
+  margin-bottom: 0.5em;
+}
+
+p {
+  margin-bottom: 1em; /* Spacing out paragraphs */
+}
+
+/* Professional touches */
+.footer {
+  text-align: center; /* Centering footer content */
+  padding: 1em 0; /* Padding around the footer */
+  background-color: #333740; /* Dark background for the footer */
+  color: #f4f1ec; /* Light text color for contrast */
+  font-size: 0.75em; /* Smaller font size for footer text */
+}
+
+/* Utility classes for spacing and layout */
+.mt-1 { margin-top: 1em; }
+.mb-1 { margin-bottom: 1em; }
+.pt-1 { padding-top: 1em; }
+.pb-1 { padding-bottom: 1em; }
+
+/* ...add more as needed... */
+ /* Tweet box shadow on hover */
+ 
+.tweet-container:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: box-shadow 0.3s ease-in-out;
+}
